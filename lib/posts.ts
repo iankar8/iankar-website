@@ -1,38 +1,88 @@
 'use server';
 
-import postsData from '../data/posts.json'
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
 
 export type Post = {
   slug: string
   title: string
   date: string
-  formattedDate: string
-  excerpt: string
-  category: string
-  tags: string[]
   content: string
-  lastModified: string
+  excerpt: string
 }
 
-export function getAllPosts(): Post[] {
-  return postsData.posts
+const postsDirectory = path.join(process.cwd(), 'content/posts')
+
+export async function getAllPosts(): Promise<Post[]> {
+  const fileNames = fs.readdirSync(postsDirectory)
+  const allPostsData = fileNames.map((fileName) => {
+    // Remove ".md" from file name to get slug
+    const slug = fileName.replace(/\.md$/, '')
+
+    // Read markdown file as string
+    const fullPath = path.join(postsDirectory, fileName)
+    const fileContents = fs.readFileSync(fullPath, 'utf8')
+
+    // Use gray-matter to parse the post metadata section
+    const { data, content } = matter(fileContents)
+
+    // Get excerpt from content (first paragraph)
+    const excerpt = content.split('\n\n')[0].replace(/[#\n]/g, '')
+
+    return {
+      slug,
+      title: data.title,
+      date: data.date,
+      content,
+      excerpt,
+    }
+  })
+
+  // Sort posts by date
+  return allPostsData.sort((a, b) => {
+    if (a.date < b.date) {
+      return 1
+    } else {
+      return -1
+    }
+  })
 }
 
-export function getPostBySlug(slug: string): Post {
-  const post = postsData.posts.find(post => post.slug === slug)
-  if (!post) throw new Error(`Post not found: ${slug}`)
-  return post
+export async function getPostBySlug(slug: string): Promise<Post | null> {
+  try {
+    const fullPath = path.join(postsDirectory, `${slug}.md`)
+    const fileContents = fs.readFileSync(fullPath, 'utf8')
+
+    // Use gray-matter to parse the post metadata section
+    const { data, content } = matter(fileContents)
+
+    // Get excerpt from content (first paragraph)
+    const excerpt = content.split('\n\n')[0].replace(/[#\n]/g, '')
+
+    return {
+      slug,
+      title: data.title,
+      date: data.date,
+      content,
+      excerpt,
+    }
+  } catch (error) {
+    return null
+  }
 }
 
 export function getAllCategories(): string[] {
-  const categories = new Set(postsData.posts.map(post => post.category))
-  return Array.from(categories)
+  // TO DO: implement categories
+  return []
 }
 
 export function getPostsByCategory(category: string): Post[] {
-  return postsData.posts.filter(post => post.category === category)
+  // TO DO: implement categories
+  return []
 }
 
 export function getPostsByTag(tag: string): Post[] {
-  return postsData.posts.filter(post => post.tags.includes(tag))
+  // TO DO: implement tags
+  return []
 }
