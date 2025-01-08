@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { format } from 'date-fns'
 import { motion } from 'framer-motion'
 import { ArrowLongRightIcon } from '@heroicons/react/24/outline'
-import Header from './Header'
 
 interface BlogContentProps {
   posts: Post[]
@@ -46,20 +45,19 @@ function BlogPostCard({ post }: { post: Post }) {
 
 export default function BlogContent({ posts }: BlogContentProps) {
   return (
-    <div className="min-h-screen">
-      <Header />
-      
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div>
-          <h1 className="font-playfair text-4xl sm:text-5xl font-bold mb-8">
-            Blog
-          </h1>
-          
-          <div className="grid gap-8">
-            {posts.map((post) => (
-              <BlogPostCard key={post.slug} post={post} />
-            ))}
-          </div>
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div>
+        <h1 className="font-playfair text-4xl sm:text-5xl font-bold mb-8">
+          Blog
+        </h1>
+        
+        <div className="space-y-16">
+          {posts.map((post) => (
+            <BlogPostCard
+              key={post.slug}
+              post={post}
+            />
+          ))}
         </div>
       </div>
     </div>

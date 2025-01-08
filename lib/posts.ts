@@ -1,5 +1,3 @@
-'use server';
-
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
@@ -53,11 +51,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   try {
     const fullPath = path.join(postsDirectory, `${slug}.md`)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
-
-    // Use gray-matter to parse the post metadata section
     const { data, content } = matter(fileContents)
-
-    // Get excerpt from content (first paragraph)
     const excerpt = content.split('\n\n')[0].replace(/[#\n]/g, '')
 
     return {
@@ -70,19 +64,4 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   } catch (error) {
     return null
   }
-}
-
-export async function getAllCategories(): Promise<string[]> {
-  // TO DO: implement categories
-  return []
-}
-
-export async function getPostsByCategory(category: string): Promise<Post[]> {
-  // TO DO: implement categories
-  return []
-}
-
-export async function getPostsByTag(tag: string): Promise<Post[]> {
-  // TO DO: implement tags
-  return []
 }

@@ -1,5 +1,3 @@
-'use server';
-
 import { getPostBySlug, getAllPosts, type Post } from '@/lib/posts'
 import Header from '@/components/Header'
 import { format } from 'date-fns'
