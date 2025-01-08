@@ -1,6 +1,6 @@
 'use server';
 
-import { getPostBySlug } from '@/lib/posts'
+import { getPostBySlug, getAllPosts, type Post } from '@/lib/posts'
 import Header from '@/components/Header'
 import { format } from 'date-fns'
 import { notFound } from 'next/navigation'
@@ -15,7 +15,7 @@ const md = new MarkdownIt({
 // Generate static params for all posts
 export async function generateStaticParams() {
   const posts = await getAllPosts()
-  return posts.map((post) => ({
+  return posts.map((post: Post) => ({
     slug: post.slug,
   }))
 }

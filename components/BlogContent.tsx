@@ -6,6 +6,10 @@ import { motion } from 'framer-motion'
 import Header from './Header'
 import { useState } from 'react'
 
+interface BlogContentProps {
+  posts: Post[]
+}
+
 function BlogPostCard({ post }: { post: Post }) {
   return (
     <Link href={`/blog/${post.slug}`}>
@@ -51,8 +55,7 @@ function CategoryPill({ category, isSelected, onClick }: {
   )
 }
 
-export default function BlogContent() {
-  const posts = getAllPosts()
+export default function BlogContent({ posts }: BlogContentProps) {
   const categories = ['All', ...getAllCategories()]
   const [selectedCategory, setSelectedCategory] = useState('All')
 
