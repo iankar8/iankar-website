@@ -72,17 +72,17 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   }
 }
 
-export function getAllCategories(): string[] {
+export async function getAllCategories(): Promise<string[]> {
   // TO DO: implement categories
   return []
 }
 
-export function getPostsByCategory(category: string): Post[] {
+export async function getPostsByCategory(category: string): Promise<Post[]> {
   // TO DO: implement categories
   return []
 }
 
-export function getPostsByTag(tag: string): Post[] {
+export async function getPostsByTag(tag: string): Promise<Post[]> {
   // TO DO: implement tags
   return []
 }
