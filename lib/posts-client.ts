@@ -2,12 +2,8 @@ export type Post = {
   slug: string
   title: string
   date: string
-  formattedDate: string
-  excerpt: string
-  category: string
-  tags: string[]
   content: string
-  lastModified: string
+  excerpt: string
 }
 
 let cachedPosts: Post[] = []
