@@ -29,11 +29,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <body>
-        <div className="min-h-screen bg-white">
-          <div className="fixed inset-0 bg-[#F4F0DB] opacity-30 -z-10" />
-          {children}
-        </div>
+      <body className="bg-[#F4F0DB] text-[#2B2B2B] antialiased">
+        {children}
       </body>
     </html>
   )
