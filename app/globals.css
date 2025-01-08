@@ -7,25 +7,61 @@
   --background-rgb: 244, 240, 219;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-rgb));
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply text-[#2B2B2B] bg-warm-bg min-h-screen;
+  }
+
   h1, h2, h3, h4, h5, h6 {
-    @apply font-playfair;
+    @apply font-playfair font-bold;
   }
   
   p, span, a, li {
-    @apply font-inter;
+    @apply font-inter text-[#4A4A4A];
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .prose {
+    @apply max-w-none;
+  }
+
+  .prose a {
+    @apply font-medium underline hover:text-[#4A4A4A] transition-colors duration-200;
+  }
+
+  .prose h1, .prose h2, .prose h3, .prose h4 {
+    @apply font-playfair font-bold text-[#2B2B2B];
+  }
+
+  .prose p, .prose ul, .prose ol {
+    @apply font-inter text-[#4A4A4A];
+  }
+
+  .prose img {
+    @apply rounded-lg;
+  }
+
+  .prose code {
+    @apply text-[#2B2B2B] bg-[#F5F5F5] px-2 py-1 rounded font-normal;
+  }
+
+  .prose pre {
+    @apply bg-[#F5F5F5] text-[#2B2B2B] p-4 rounded-lg;
+  }
+
+  .prose pre code {
+    @apply bg-transparent p-0;
   }
 }
 

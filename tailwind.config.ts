@@ -12,8 +12,8 @@ const config: Config = {
         "warm-bg": "#F4F0DB",
       },
       fontFamily: {
-        playfair: ["Playfair Display", "serif"],
-        inter: ["Inter", "sans-serif"],
+        playfair: ["var(--font-playfair)", "serif"],
+        inter: ["var(--font-inter)", "sans-serif"],
       },
       animation: {
         "fade-in": "fadeIn 0.5s ease-in-out",
@@ -34,25 +34,52 @@ const config: Config = {
         DEFAULT: {
           css: {
             color: "#2B2B2B",
+            maxWidth: "none",
             a: {
               color: "#2B2B2B",
+              textDecoration: "underline",
+              fontWeight: "500",
               "&:hover": {
                 color: "#4A4A4A",
               },
             },
             "h1, h2, h3, h4": {
-              fontFamily: "Playfair Display, serif",
+              fontFamily: "var(--font-playfair), serif",
               fontWeight: "700",
+              color: "#2B2B2B",
             },
             "p, ul, ol": {
-              fontFamily: "Inter, sans-serif",
+              fontFamily: "var(--font-inter), sans-serif",
+              color: "#4A4A4A",
+            },
+            img: {
+              borderRadius: "0.5rem",
+            },
+            code: {
+              color: "#2B2B2B",
+              backgroundColor: "#F5F5F5",
+              padding: "0.2em 0.4em",
+              borderRadius: "0.25rem",
+              fontWeight: "400",
+            },
+            pre: {
+              backgroundColor: "#F5F5F5",
+              color: "#2B2B2B",
+              padding: "1rem",
+              borderRadius: "0.5rem",
+              code: {
+                backgroundColor: "transparent",
+                padding: "0",
+              },
             },
           },
         },
       },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
-} satisfies Config;
+  plugins: [
+    require("@tailwindcss/typography"),
+  ],
+};
 
 export default config;
