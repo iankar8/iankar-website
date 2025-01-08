@@ -39,7 +39,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
               <>
                 <span>•</span>
                 <div className="flex items-center space-x-2">
-                  {post.tags.map((tag) => (
+                  {post.tags.map((tag: string) => (
                     <span
                       key={tag}
                       className="text-sm bg-[#F5F5F5] px-2 py-1 rounded"
