@@ -1,14 +1,8 @@
 'use server';
 
 import Header from '@/components/Header'
-import type { Metadata } from 'next'
-import { getAllPosts } from '@/lib/blog'
+import { getAllPosts } from '@/lib/posts'
 import { BlogPostCard } from '@/components/BlogPostCard'
-
-export const metadata: Metadata = {
-  title: 'Blog - Ian Kar',
-  description: 'Thoughts and essays on AI, business, and life.',
-}
 
 export default async function Blog() {
   const posts = await getAllPosts()
