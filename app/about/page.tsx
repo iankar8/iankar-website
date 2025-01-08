@@ -21,30 +21,52 @@ export default function About() {
           
           <div className="space-y-6 text-lg">
             <p>
-              Hi, I'm Ian Kar—a writer, entrepreneur, and tech enthusiast based in Silicon Valley.
-              I spend my time exploring and writing about the intersections of technology, 
-              business, and culture.
+              Hi! I'm Ian Kar, a writer and entrepreneur based in San Francisco. I'm currently building{' '}
+              <a 
+                href="https://codeium.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#2B2B2B] hover:text-[#4A4A4A] transition-colors underline"
+              >
+                Codeium
+              </a>
+              , an AI coding assistant that helps developers write better code faster.
             </p>
             
             <p>
-              My journey in tech and entrepreneurship has given me a unique perspective 
-              on how technology shapes our world. Through my writing, I aim to share these 
-              insights and spark meaningful conversations about where we're headed.
+              Previously, I was a fintech reporter at Business Insider where I covered the intersection
+              of finance and technology. My work has been featured in publications like TechCrunch,
+              Forbes, and The Wall Street Journal.
             </p>
 
             <p>
-              When I'm not writing or building, you might find me exploring new restaurants,
-              catching up on films, or curating my latest playlist. I believe in the power
-              of good food, great stories, and the perfect soundtrack.
+              I'm passionate about the future of technology, particularly in areas like artificial
+              intelligence, developer tools, and fintech. Through my writing, I aim to explore these
+              topics and their impact on business and society.
+            </p>
+
+            <p>
+              When I'm not working, you can find me exploring San Francisco's food scene, reading
+              (mostly non-fiction and essays), or planning my next travel adventure.
             </p>
           </div>
 
           <div className="mt-12">
-            <h2 className="font-playfair text-2xl font-bold mb-4">Connect</h2>
+            <h2 className="font-playfair text-2xl font-bold mb-4">
+              Get in Touch
+            </h2>
             <p>
               The best way to keep up with my thoughts and work is through my blog posts
-              and newsletter. You can also find me sharing quick thoughts and interesting
-              finds on Twitter.
+              and newsletter. You can also find me on{' '}
+              <a 
+                href="https://twitter.com/iankar_"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#2B2B2B] hover:text-[#4A4A4A] transition-colors underline"
+              >
+                Twitter
+              </a>
+              {' '}where I share quick thoughts and interesting finds.
             </p>
           </div>
         </motion.div>
