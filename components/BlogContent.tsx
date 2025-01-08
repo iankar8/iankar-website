@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import Header from './Header'
 import { useState } from 'react'
-import { NewsletterForm } from './NewsletterForm'
 
 function BlogPostCard({ post }: { post: Post }) {
   return (
@@ -85,7 +84,6 @@ export default function BlogContent() {
           </div>
 
           <div className="max-w-lg">
-            <NewsletterForm />
           </div>
         </motion.div>
       </section>
