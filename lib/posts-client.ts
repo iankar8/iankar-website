@@ -9,30 +9,15 @@ export type Post = {
 }
 
 let cachedPosts: Post[] = []
-let cachedCategories: string[] = []
 
 export function setPosts(posts: Post[]) {
   cachedPosts = posts
 }
 
-export function setCategories(categories: string[]) {
-  cachedCategories = categories
-}
-
 export async function getAllPosts(): Promise<Post[]> {
-  return cachedPosts
-}
-
-export function getAllCategories(): string[] {
-  return cachedCategories
-}
-
-export function getPostsByCategory(category: string): Post[] {
-  return cachedPosts.filter(post => post.category === category)
-}
-
-export function getPostsByTag(tag: string): Post[] {
-  return cachedPosts.filter(post => post.tags.includes(tag))
+  const response = await fetch('/api/posts')
+  const posts = await response.json()
+  return posts
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
