@@ -1,7 +1,9 @@
 import './globals.css'
-import '@fontsource/playfair-display'
-import '@fontsource/inter'
 import type { Metadata } from 'next'
+import { Inter, Playfair_Display } from 'next/font/google'
+
+const inter = Inter({ subsets: ['latin'] })
+const playfair = Playfair_Display({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Ian Kar - Blog and Recommendations on AI, Business, and Life',
@@ -18,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-warm-bg">
+      <body className={`${inter.className} min-h-screen bg-warm-bg`}>
         {children}
       </body>
     </html>
