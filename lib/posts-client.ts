@@ -1,3 +1,5 @@
+'use client';
+
 export type Post = {
   slug: string
   title: string
@@ -17,7 +19,7 @@ export function setCategories(categories: string[]) {
   cachedCategories = categories
 }
 
-export function getAllPosts(): Post[] {
+export async function getAllPosts(): Promise<Post[]> {
   return cachedPosts
 }
 
@@ -31,4 +33,11 @@ export function getPostsByCategory(category: string): Post[] {
 
 export function getPostsByTag(tag: string): Post[] {
   return cachedPosts.filter(post => post.tags.includes(tag))
+}
+
+export async function getPostBySlug(slug: string): Promise<Post | null> {
+  const response = await fetch(`/api/posts/${slug}`)
+  if (!response.ok) return null
+  const post = await response.json()
+  return post
 }
