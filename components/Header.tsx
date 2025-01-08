@@ -30,16 +30,10 @@ export default function Header() {
               Blog
             </Link>
             <Link 
-              href="/current-projects"
+              href="/recommendations"
               className="text-[#2B2B2B] hover:text-[#4A4A4A] transition-colors"
             >
-              Current Projects
-            </Link>
-            <Link 
-              href="/recs"
-              className="text-[#2B2B2B] hover:text-[#4A4A4A] transition-colors"
-            >
-              Rec's
+              Recommendations
             </Link>
           </div>
         </div>
