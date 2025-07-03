@@ -70,23 +70,23 @@ export default function Recommendations() {
     <main className="min-h-screen">
       <Header />
       
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="section py-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="font-playfair text-4xl sm:text-5xl font-bold mb-8">
+          <h1 className="text-h1 text-[#2B2B2B]">
             Recommendations
           </h1>
           
-          <p className="text-lg text-[#4A4A4A] mb-12">
+          <p className="text-body text-[#4A4A4A]">
             A curated list of my favorite places, books, and articles. Updated regularly.
           </p>
 
           {Object.entries(recommendations).map(([category, items]) => (
-            <section key={category} className="mb-16">
-              <h2 className="font-playfair text-2xl font-bold mb-8">
+            <section key={category} className="space-y-8">
+              <h2 className="text-h2 text-[#2B2B2B]">
                 {category}
               </h2>
               

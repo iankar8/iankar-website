@@ -5,6 +5,13 @@
 :root {
   --foreground-rgb: 43, 43, 43;
   --background-rgb: 244, 240, 219;
+  
+  /* 8pt Spacing Tokens */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 48px;
 }
 
 @layer base {
@@ -15,23 +22,40 @@
   }
 
   body {
-    @apply bg-[#F4F0DB] text-[#2B2B2B];
+    @apply bg-[#F4F0DB] text-[#2B2B2B] px-4 md:px-8 font-geist text-body;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-playfair font-bold text-[#2B2B2B];
   }
   
+  h1 {
+    @apply text-h1;
+  }
+  
+  h2 {
+    @apply text-h2;
+  }
+  
   p, span, a, li {
-    @apply font-inter text-[#4A4A4A];
+    @apply font-geist text-[#4A4A4A] text-body;
   }
 
   a {
     @apply transition-colors duration-200;
   }
+  
+  /* Enhanced focus indicators for accessibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-[#2B2B2B];
+  }
 }
 
 @layer components {
+  .section {
+    @apply max-w-3xl mx-auto space-y-6;
+  }
+
   .prose {
     @apply max-w-none;
   }
@@ -43,10 +67,18 @@
     @apply font-playfair font-bold text-[#2B2B2B];
   }
 
+  .prose h1 {
+    @apply text-h1;
+  }
+  
+  .prose h2 {
+    @apply text-h2;
+  }
+
   .prose p, 
   .prose ul, 
   .prose ol {
-    @apply font-inter text-[#4A4A4A] leading-relaxed;
+    @apply font-geist text-[#4A4A4A] text-body;
   }
 
   .prose a {

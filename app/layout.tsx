@@ -2,10 +2,11 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
 
-const inter = Inter({ 
+const geist = Inter({ 
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-inter',
+  variable: '--font-geist',
+  fallback: ['Geist', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
 })
 
 const playfair = Playfair_Display({
@@ -28,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${geist.variable} ${playfair.variable}`}>
       <body className="bg-[#F4F0DB] text-[#2B2B2B] antialiased">
         {children}
       </body>

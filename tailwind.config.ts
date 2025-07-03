@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 const config: Config = {
   content: [
@@ -8,12 +9,34 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      spacing: {
+        'xs': 'var(--space-xs)',
+        'sm': 'var(--space-sm)', 
+        'md': 'var(--space-md)',
+        'lg': 'var(--space-lg)',
+        'xl': 'var(--space-xl)',
+      },
       colors: {
         "warm-bg": "#F4F0DB",
       },
       fontFamily: {
+        geist: ["var(--font-geist)", "Geist", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
         playfair: ["var(--font-playfair)", "serif"],
-        inter: ["var(--font-inter)", "sans-serif"],
+        // Legacy aliases for compatibility
+        inter: ["var(--font-geist)", "Geist", "system-ui", "sans-serif"],
+      },
+      fontSize: {
+        // Typography scale with line-heights
+        'xs': ['0.75rem', { lineHeight: '1rem' }],
+        'sm': ['0.875rem', { lineHeight: '1.25rem' }],
+        'base': ['1rem', { lineHeight: '1.75rem' }], // Body: text-base leading-7
+        'lg': ['1.125rem', { lineHeight: '1.75rem' }],
+        'xl': ['1.25rem', { lineHeight: '1.75rem' }],
+        '2xl': ['1.5rem', { lineHeight: '2rem' }], // H2: text-2xl
+        '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
+        '4xl': ['2.25rem', { lineHeight: '2.5rem' }], // H1: text-4xl/9 = 36px/40px
+        '5xl': ['3rem', { lineHeight: '1' }],
+        '6xl': ['3.75rem', { lineHeight: '1' }],
       },
       animation: {
         "fade-in": "fadeIn 0.5s ease-in-out",
@@ -35,6 +58,9 @@ const config: Config = {
           css: {
             color: "#2B2B2B",
             maxWidth: "none",
+            fontFamily: "var(--font-geist), Geist, system-ui, sans-serif",
+            fontSize: "1rem",
+            lineHeight: "1.75rem",
             a: {
               color: "#2B2B2B",
               textDecoration: "underline",
@@ -43,13 +69,30 @@ const config: Config = {
                 color: "#4A4A4A",
               },
             },
-            "h1, h2, h3, h4": {
+            "h1": {
               fontFamily: "var(--font-playfair), serif",
-              fontWeight: "700",
+              fontWeight: "600", // semibold
+              fontSize: "2.25rem", // text-4xl = 36px > 28px ✓
+              lineHeight: "2.5rem", // leading-9
+              letterSpacing: "-0.025em", // tracking-tight
+              color: "#2B2B2B",
+            },
+            "h2": {
+              fontFamily: "var(--font-playfair), serif",
+              fontWeight: "500", // medium
+              fontSize: "1.5rem", // text-2xl
+              lineHeight: "2rem",
+              color: "#2B2B2B",
+            },
+            "h3, h4": {
+              fontFamily: "var(--font-playfair), serif",
+              fontWeight: "600",
               color: "#2B2B2B",
             },
             "p, ul, ol": {
-              fontFamily: "var(--font-inter), sans-serif",
+              fontFamily: "var(--font-geist), Geist, system-ui, sans-serif",
+              fontSize: "1rem", // text-base
+              lineHeight: "1.75rem", // leading-7
               color: "#4A4A4A",
             },
             img: {
@@ -79,6 +122,42 @@ const config: Config = {
   },
   plugins: [
     require("@tailwindcss/typography"),
+    plugin(function({ addUtilities, theme }) {
+      const fontSize4xl = theme('fontSize.4xl') as [string, { lineHeight: string }] | undefined;
+      const fontSize2xl = theme('fontSize.2xl') as [string, { lineHeight: string }] | undefined;
+      const fontSizeBase = theme('fontSize.base') as [string, { lineHeight: string }] | undefined;
+      
+      addUtilities({
+        // Typography utilities
+        '.text-h1': {
+          fontSize: fontSize4xl?.[0] || '2.25rem',
+          lineHeight: '2.5rem', // leading-9 equivalent
+          fontWeight: '600', // semibold
+          letterSpacing: '-0.025em', // tracking-tight
+          fontFamily: theme('fontFamily.playfair')?.join(', ') || 'serif',
+        },
+        '.text-h2': {
+          fontSize: fontSize2xl?.[0] || '1.5rem',
+          lineHeight: fontSize2xl?.[1]?.lineHeight || '2rem',
+          fontWeight: '500', // medium
+          fontFamily: theme('fontFamily.playfair')?.join(', ') || 'serif',
+        },
+        '.text-body': {
+          fontSize: fontSizeBase?.[0] || '1rem',
+          lineHeight: '1.75rem', // leading-7
+          fontFamily: theme('fontFamily.geist')?.join(', ') || 'sans-serif',
+        },
+        // Reduced motion support
+        '@media (prefers-reduced-motion: reduce)': {
+          '*': {
+            animationDuration: '0.01ms !important',
+            animationIterationCount: '1 !important',
+            transitionDuration: '0.01ms !important',
+            scrollBehavior: 'auto !important',
+          },
+        },
+      });
+    }),
   ],
 };
 

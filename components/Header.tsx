@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-[#F4F0DB]">
-      <nav className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="max-w-4xl mx-auto">
         <div className="flex justify-between items-center h-16">
           {/* Logo/Monogram */}
           <Link href="/">
