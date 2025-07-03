@@ -1,6 +1,8 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
 const geist = Inter({ 
   subsets: ['latin'],
@@ -30,8 +32,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${geist.variable} ${playfair.variable}`}>
-      <body className="bg-[#F4F0DB] text-[#2B2B2B] antialiased">
-        {children}
+      <body className="bg-[#F4F0DB] text-[#2B2B2B] antialiased min-h-screen flex flex-col">
+        <Navbar />
+        <main className="flex-1">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   )

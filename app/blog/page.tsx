@@ -1,6 +1,5 @@
 'use server';
 
-import Header from '@/components/Header'
 import { getAllPosts } from '@/lib/posts'
 import { BlogPostCard } from '@/components/BlogPostCard'
 
@@ -8,23 +7,19 @@ export default async function Blog() {
   const posts = await getAllPosts()
 
   return (
-    <main className="min-h-screen">
-      <Header />
+    <div className="section py-20">
+      <h1 className="text-h1 text-[#2B2B2B]">
+        Blog
+      </h1>
       
-      <div className="section py-20">
-        <h1 className="text-h1 text-[#2B2B2B]">
-          Blog
-        </h1>
-        
-        <div className="space-y-16">
-          {posts.map((post) => (
-            <BlogPostCard
-              key={post.slug}
-              post={post}
-            />
-          ))}
-        </div>
+      <div className="space-y-16">
+        {posts.map((post) => (
+          <BlogPostCard
+            key={post.slug}
+            post={post}
+          />
+        ))}
       </div>
-    </main>
+    </div>
   )
 }

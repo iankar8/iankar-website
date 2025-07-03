@@ -6,25 +6,37 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:ci": "jest --ci --coverage --passWithNoTests"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@mdx-js/loader": "^3.0.0",
     "@mdx-js/react": "^3.0.0",
     "@next/mdx": "^14.0.4",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-tabs": "^1.1.12",
     "@types/mdx": "^2.0.10",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "date-fns": "^3.0.6",
     "framer-motion": "^10.17.9",
     "gray-matter": "^4.0.3",
+    "lucide-react": "^0.525.0",
     "markdown-it": "^14.0.0",
     "next": "14.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tailwindcss": "^3.4.1"
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^3.4.1",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
     "@types/markdown-it": "^13.0.7",
     "@types/node": "^20.10.6",
     "@types/react": "^18.2.46",
@@ -32,6 +44,8 @@
     "autoprefixer": "^10.4.16",
     "eslint": "^8.56.0",
     "eslint-config-next": "14.0.4",
+    "jest": "^30.0.4",
+    "jest-environment-jsdom": "^30.0.4",
     "postcss": "^8.4.33",
     "typescript": "^5.3.3"
   }

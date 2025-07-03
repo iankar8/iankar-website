@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion'
-import Header from '@/components/Header'
 
 type Recommendation = {
   name: string
@@ -67,72 +66,68 @@ const recommendations: Record<string, Recommendation[]> = {
 
 export default function Recommendations() {
   return (
-    <main className="min-h-screen">
-      <Header />
-      
-      <div className="section py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h1 className="text-h1 text-[#2B2B2B]">
-            Recommendations
-          </h1>
-          
-          <p className="text-body text-[#4A4A4A]">
-            A curated list of my favorite places, books, and articles. Updated regularly.
-          </p>
+    <div className="section py-20">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <h1 className="text-h1 text-[#2B2B2B]">
+          Recommendations
+        </h1>
+        
+        <p className="text-body text-[#4A4A4A]">
+          A curated list of my favorite places, books, and articles. Updated regularly.
+        </p>
 
-          {Object.entries(recommendations).map(([category, items]) => (
-            <section key={category} className="space-y-8">
-              <h2 className="text-h2 text-[#2B2B2B]">
-                {category}
-              </h2>
-              
-              <div className="space-y-8">
-                {items.map((item) => (
-                  <motion.div
-                    key={item.name}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5 }}
-                    className="group"
-                  >
-                    <div className="flex items-start space-x-4">
-                      <span className="text-2xl">{item.emoji}</span>
-                      <div>
-                        <h3 className="font-bold text-lg mb-1">
-                          {item.link ? (
-                            <a 
-                              href={item.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="hover:underline"
-                            >
-                              {item.name}
-                            </a>
-                          ) : (
-                            item.name
-                          )}
-                        </h3>
-                        {item.location && (
-                          <p className="text-sm text-[#4A4A4A] mb-2">
-                            📍 {item.location}
-                          </p>
+        {Object.entries(recommendations).map(([category, items]) => (
+          <section key={category} className="space-y-8">
+            <h2 className="text-h2 text-[#2B2B2B]">
+              {category}
+            </h2>
+            
+            <div className="space-y-8">
+              {items.map((item) => (
+                <motion.div
+                  key={item.name}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="group"
+                >
+                  <div className="flex items-start space-x-4">
+                    <span className="text-2xl">{item.emoji}</span>
+                    <div>
+                      <h3 className="font-bold text-lg mb-1">
+                        {item.link ? (
+                          <a 
+                            href={item.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:underline"
+                          >
+                            {item.name}
+                          </a>
+                        ) : (
+                          item.name
                         )}
-                        <p className="text-[#4A4A4A]">
-                          {item.description}
+                      </h3>
+                      {item.location && (
+                        <p className="text-sm text-[#4A4A4A] mb-2">
+                          📍 {item.location}
                         </p>
-                      </div>
+                      )}
+                      <p className="text-[#4A4A4A]">
+                        {item.description}
+                      </p>
                     </div>
-                  </motion.div>
-                ))}
-              </div>
-            </section>
-          ))}
-        </motion.div>
-      </div>
-    </main>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </section>
+        ))}
+      </motion.div>
+    </div>
   )
 }
