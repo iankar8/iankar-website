@@ -97,3 +97,96 @@ test('module functionality', async ({ page }) => {
 - [ ] Performance benchmarks achieved
 - [ ] Tests pass
 - [ ] Code review ready 
+
+## Execution Priority
+• Execute all tasks with minimal explanation.
+• Provide concise outputs focused on essential information.
+• Minimize interaction; assume sensible defaults.
+• Report errors briefly with direct solutions.
+• Solve problems autonomously; fill gaps implicitly.
+• Skip code explanations unless requested.
+• Limit feedback to confirmations or alerts.
+• Make reasonable default assumptions when inputs unspecified.
+• Proceed despite minor non-blocking issues.
+• Respond in single, complete steps.
+• Choose the quickest, most reliable solution path.
+• Apply iterative optimizations without prompting.
+
+## Guiding Principles
+• Adopt 8-pt spacing system & Geist Variable type scale.
+• Prioritise WCAG AA accessibility & CLS < 0.1.
+• Use Tailwind CSS, shadcn/ui, Framer Motion.
+• Preserve minimalist cream-on-black brand (#F4F0DB background, #2B2B2B text).
+
+## Design System
+Spacing: 4-96px (8-pt increments)
+Typography: Geist Variable font, fluid type scale
+Colors: Cream #F4F0DB background, Dark #2B2B2B text
+Motion: Subtle, purposeful via Framer Motion
+Components: shadcn/ui
+
+## Performance Standards
+CLS < 0.1
+LCP < 2.5 s
+FID < 100 ms
+Accessibility: WCAG AA
+
+## Code Standards
+• Tailwind utility-first CSS
+• Functional React components with TypeScript
+• React hooks for local state
+• Playwright for E2E tests
+• Atomic, single-responsibility components
+• Split large files/functions for maintainability
+
+## Commit Standards
+Format: `type(scope): description`
+Types: feat, fix, docs, style, refactor, test, chore
+Examples:
+  • `feat(ui): add responsive navigation component`
+  • `fix(accessibility): improve focus management`
+
+## Browser Support
+Modern: Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
+Mobile: iOS Safari 14+, Chrome Mobile 90+
+Progressive enhancement: Core functionality without JS
+
+## Development Workflow
+1. Create feature branch from main
+2. Implement atomic commits
+3. Test with Playwright
+4. Submit PR with Conventional Commits title
+5. Ensure CI passes before merge
+
+## PR Workflow (CLI)
+1. `git status`
+2. `git add .` (if needed)
+3. `git commit -m "<message>"`
+4. `git push`
+5. `git branch`
+6. `git log main..$(git branch --show-current)`
+7. `git diff --name-status main`
+8. `gh pr create --title "<title>" --body "<body>"`
+
+## AI Debugger Mode
+1. Reflect on 5-7 possible sources
+2. Narrow to 1-2 likely causes
+3. Add logs to validate assumptions
+4. Collect console & network logs
+5. Obtain server logs (or prompt user)
+6. Analyse & propose fix
+7. Suggest additional logs if needed
+8. After fix, request approval to remove logs
+
+## AI Planner Mode
+• Ask 4-6 clarifying questions
+• Draft comprehensive plan & request approval
+• Implement plan once approved
+• Report completions & next steps after each phase
+
+## Sprint Automation Tasks
+• Maintain `progress-tracker.md` per sprint & phase
+• Auto-update `.cursorrules` based on lessons learned
+• Generate sprint summaries with completed tasks, challenges, lessons, rule updates
+
+--- 

@@ -1,16 +1,7 @@
-'use client';
-
-import { motion } from 'framer-motion'
-
 export default function About() {
   return (
     <article className="section py-20">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="prose prose-lg"
-      >
+      <div className="prose prose-lg">
         <h1 className="text-h1 text-[#2B2B2B]">
           About Me
         </h1>
@@ -65,7 +56,7 @@ export default function About() {
             {' '}where I share quick thoughts and interesting finds.
           </p>
         </div>
-      </motion.div>
+      </div>
     </article>
   )
 }

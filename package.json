@@ -9,7 +9,15 @@
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:ci": "jest --ci --coverage --passWithNoTests"
+    "test:ci": "jest --ci --coverage --passWithNoTests",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed",
+    "test:accessibility": "playwright test accessibility.spec.ts",
+    "test:performance": "playwright test performance.spec.ts",
+    "test:performance:3g": "playwright test performance.spec.ts --project=\"Performance 3G\"",
+    "playwright:install": "playwright install",
+    "playwright:report": "playwright show-report"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
@@ -23,6 +31,7 @@
     "clsx": "^2.1.1",
     "date-fns": "^3.0.6",
     "framer-motion": "^10.17.9",
+    "geist": "^1.4.2",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.525.0",
     "markdown-it": "^14.0.0",
@@ -34,6 +43,8 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "^1.53.2",
     "@tailwindcss/typography": "^0.5.16",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
@@ -47,6 +58,7 @@
     "jest": "^30.0.4",
     "jest-environment-jsdom": "^30.0.4",
     "postcss": "^8.4.33",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "wait-on": "^8.0.3"
   }
 }

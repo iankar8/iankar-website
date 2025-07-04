@@ -1,0 +1,36 @@
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="1.333002">
+<testsuite name="performance.spec.ts" timestamp="2025-07-03T06:23:30.874Z" hostname="chromium" tests="1" failures="1" skipped="0" time="0.363" errors="0">
+<testcase name="Performance Tests › Homepage should have LCP &lt; 2.5s on 3G" classname="performance.spec.ts" time="0.363">
+<failure message="performance.spec.ts:20:9 Homepage should have LCP &lt; 2.5s on 3G" type="FAILURE">
+<![CDATA[  [chromium] › performance.spec.ts:20:9 › Performance Tests › Homepage should have LCP < 2.5s on 3G 
+
+    TypeError: page.evaluateOnNewDocument is not a function
+
+      31 |       let lcp = 0
+      32 |       
+    > 33 |       await page.evaluateOnNewDocument(() => {
+         |                  ^
+      34 |         new PerformanceObserver((entryList) => {
+      35 |           const entries = entryList.getEntries()
+      36 |           const lastEntry = entries[entries.length - 1]
+        at /Users/iankar/CascadeProjects/iankar-website/e2e/performance.spec.ts:33:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/performance-Performance-Te-68905--should-have-LCP-2-5s-on-3G-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/performance-Performance-Te-68905--should-have-LCP-2-5s-on-3G-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results/performance-Performance-Te-68905--should-have-LCP-2-5s-on-3G-chromium/test-failed-1.png]]
+
+[[ATTACHMENT|test-results/performance-Performance-Te-68905--should-have-LCP-2-5s-on-3G-chromium/video.webm]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

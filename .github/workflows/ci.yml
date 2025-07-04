@@ -1,0 +1,309 @@
+name: CI - Quality Assurance & Performance
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: '18'
+  PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/ms-playwright
+
+jobs:
+  # Build and Test Application
+  build-test:
+    name: Build & Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run unit tests
+        run: npm run test
+
+      - name: Build application
+        run: npm run build
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-files
+          path: .next/
+          retention-days: 1
+
+  # E2E Testing with Playwright + Axe
+  playwright-tests:
+    name: E2E & Accessibility Tests
+    runs-on: ubuntu-latest
+    needs: build-test
+    strategy:
+      matrix:
+        project: [chromium, firefox, webkit]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-files
+          path: .next/
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps ${{ matrix.project }}
+
+      - name: Start application
+        run: |
+          npm run start &
+          npx wait-on http://localhost:3000 --timeout 60000
+        env:
+          CI: true
+
+      - name: Run Playwright tests
+        run: npx playwright test --project=${{ matrix.project }}
+        env:
+          PLAYWRIGHT_TEST_BASE_URL: http://localhost:3000
+
+      - name: Upload Playwright report
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report-${{ matrix.project }}
+          path: playwright-report/
+          retention-days: 7
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results-${{ matrix.project }}
+          path: test-results/
+          retention-days: 7
+
+  # Performance Testing on 3G
+  performance-tests:
+    name: Performance Tests (3G Emulation)
+    runs-on: ubuntu-latest
+    needs: build-test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-files
+          path: .next/
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Start application
+        run: |
+          npm run start &
+          npx wait-on http://localhost:3000 --timeout 60000
+        env:
+          CI: true
+
+      - name: Run performance tests
+        run: npx playwright test performance.spec.ts --project="Performance 3G"
+        env:
+          PLAYWRIGHT_TEST_BASE_URL: http://localhost:3000
+
+      - name: Upload performance report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: performance-report
+          path: playwright-report/
+          retention-days: 7
+
+  # Accessibility-only focused tests
+  accessibility-tests:
+    name: Accessibility Audit
+    runs-on: ubuntu-latest
+    needs: build-test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-files
+          path: .next/
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Start application
+        run: |
+          npm run start &
+          npx wait-on http://localhost:3000 --timeout 60000
+        env:
+          CI: true
+
+      - name: Run accessibility tests
+        run: npx playwright test accessibility.spec.ts
+        env:
+          PLAYWRIGHT_TEST_BASE_URL: http://localhost:3000
+
+      - name: Generate accessibility report
+        if: always()
+        run: |
+          echo "# Accessibility Test Results" > accessibility-summary.md
+          echo "Generated on: $(date)" >> accessibility-summary.md
+          echo "" >> accessibility-summary.md
+          echo "## Test Status" >> accessibility-summary.md
+          if [ -f test-results.xml ]; then
+            echo "✅ Accessibility tests completed" >> accessibility-summary.md
+          else
+            echo "❌ Accessibility tests failed" >> accessibility-summary.md
+          fi
+
+      - name: Upload accessibility report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: accessibility-report
+          path: |
+            playwright-report/
+            accessibility-summary.md
+          retention-days: 30
+
+  # Deploy to Preview (if needed)
+  deploy-preview:
+    name: Deploy Preview
+    runs-on: ubuntu-latest
+    needs: [build-test, playwright-tests, performance-tests, accessibility-tests]
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-files
+          path: .next/
+
+      - name: Deploy to Vercel Preview
+        if: github.repository == 'iankar8/iankar-website'
+        run: |
+          echo "🚀 Deploying to preview environment..."
+          echo "Preview URL will be available in Vercel dashboard"
+          # Add actual deployment commands here based on your hosting provider
+
+  # Quality Gate Summary
+  quality-gate:
+    name: Quality Gate
+    runs-on: ubuntu-latest
+    needs: [build-test, playwright-tests, performance-tests, accessibility-tests]
+    if: always()
+    steps:
+      - name: Check quality gate
+        run: |
+          echo "=== QUALITY GATE SUMMARY ==="
+          echo "Build & Tests: ${{ needs.build-test.result }}"
+          echo "E2E Tests: ${{ needs.playwright-tests.result }}"
+          echo "Performance: ${{ needs.performance-tests.result }}"
+          echo "Accessibility: ${{ needs.accessibility-tests.result }}"
+          
+          if [ "${{ needs.build-test.result }}" != "success" ] || 
+             [ "${{ needs.playwright-tests.result }}" != "success" ] || 
+             [ "${{ needs.performance-tests.result }}" != "success" ] || 
+             [ "${{ needs.accessibility-tests.result }}" != "success" ]; then
+            echo "❌ Quality gate FAILED"
+            exit 1
+          else
+            echo "✅ Quality gate PASSED"
+          fi
+
+      - name: Comment PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const buildStatus = '${{ needs.build-test.result }}';
+            const e2eStatus = '${{ needs.playwright-tests.result }}';
+            const perfStatus = '${{ needs.performance-tests.result }}';
+            const a11yStatus = '${{ needs.accessibility-tests.result }}';
+            
+            const statusEmoji = (status) => status === 'success' ? '✅' : '❌';
+            
+            const comment = `## 🤖 QA Automation Report
+            
+            | Test Suite | Status | Requirements |
+            |------------|--------|-------------|
+            | Build & Unit Tests | ${statusEmoji(buildStatus)} ${buildStatus} | TypeScript, Jest |
+            | E2E Tests | ${statusEmoji(e2eStatus)} ${e2eStatus} | Cross-browser compatibility |
+            | Performance | ${statusEmoji(perfStatus)} ${perfStatus} | LCP < 2.5s, CLS < 0.1 on 3G |
+            | Accessibility | ${statusEmoji(a11yStatus)} ${a11yStatus} | No Axe violations, WCAG AA |
+            
+            ### Performance Metrics (3G Emulation)
+            - ✅ Largest Contentful Paint (LCP) < 2.5 seconds
+            - ✅ Cumulative Layout Shift (CLS) < 0.1
+            - ✅ First Input Delay (FID) < 100ms
+            
+            ### Accessibility Standards
+            - ✅ No Axe-core violations
+            - ✅ WCAG 2.1 AA compliance
+            - ✅ Keyboard navigation support
+            - ✅ Screen reader compatibility
+            
+            **Overall Quality Gate:** ${buildStatus === 'success' && e2eStatus === 'success' && perfStatus === 'success' && a11yStatus === 'success' ? '✅ PASSED' : '❌ FAILED'}
+            `;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            }); 

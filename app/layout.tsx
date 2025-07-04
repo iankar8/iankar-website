@@ -1,27 +1,25 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter, Playfair_Display } from 'next/font/google'
+import localFont from 'next/font/local'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
-const geist = Inter({ 
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-geist',
-  fallback: ['Geist', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
-})
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-playfair',
+const geist = localFont({
+  src: [
+    {
+      path: '../public/fonts/GeistVariable.woff2',
+      weight: '100 900',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-geist-sans',
 })
 
 export const metadata: Metadata = {
   title: 'Ian Kar - Blog and Recommendations on AI, Business, and Life',
   description: 'Writer, entrepreneur, and tech enthusiast sharing thoughts on AI, business, and life.',
   icons: {
-    icon: '/favicon.ico',
+    icon: '/favicon.svg',
   },
 }
 
@@ -31,10 +29,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${geist.variable} ${playfair.variable}`}>
-      <body className="bg-[#F4F0DB] text-[#2B2B2B] antialiased min-h-screen flex flex-col">
+    <html lang="en" className={geist.variable}>
+      <body className="bg-cream text-dark antialiased min-h-screen">
         <Navbar />
-        <main className="flex-1">
+        <main className="max-w-5xl mx-auto px-4 sm:px-8">
           {children}
         </main>
         <Footer />
