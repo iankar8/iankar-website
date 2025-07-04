@@ -67,17 +67,17 @@ export default function NewsletterHero({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className={`p-8 bg-[#F6F4E9]/50 border border-[#E5E1D8]/30 rounded-xl ${className}`}
+      className={`p-8 bg-cream/60 border border-dark/10 rounded-xl ${className}`}
     >
       <motion.h3 
-        className="text-h2 text-[#2B2B2B] mb-4"
+        className="text-h2 text-dark mb-4"
         {...fadeSlideUp}
       >
         {title}
       </motion.h3>
       
       <motion.p 
-        className="text-body text-[#4A4A4A] mb-6"
+        className="text-body text-dark/70 mb-6"
         {...fadeSlideUp}
         transition={{ ...fadeSlideUp.transition, delay: 0.05 }}
       >
@@ -106,13 +106,13 @@ export default function NewsletterHero({
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               disabled={status === 'loading'}
-              className="flex-1 bg-white/80 border-[#E5E1D8] focus:border-[#2B2B2B] focus:ring-[#2B2B2B]/20"
+              className="flex-1 bg-white/80 border-dark/10 focus:border-dark focus:ring-dark/20"
               required
             />
             <Button
               type="submit"
               disabled={status === 'loading' || !email}
-              className="bg-[#2B2B2B] hover:bg-[#1A1A1A] text-white px-6 whitespace-nowrap"
+              className="bg-dark hover:bg-dark/90 text-white px-6 whitespace-nowrap"
             >
               {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
             </Button>

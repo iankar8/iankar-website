@@ -12,7 +12,7 @@ export default function NotFound() {
         transition={{ duration: 0.8 }}
         className="text-center"
       >
-        <h1 className="text-h1 text-[#2B2B2B]">
+        <h1 className="text-h1 text-dark">
           Post Not Found
         </h1>
         
@@ -22,7 +22,7 @@ export default function NotFound() {
 
         <Link 
           href="/blog"
-          className="inline-flex items-center space-x-2 text-[#2B2B2B] hover:text-[#4A4A4A] transition-colors"
+          className="inline-flex items-center space-x-2 text-dark hover:text-dark/70 transition-colors"
         >
           <span>← Back to Blog</span>
         </Link>

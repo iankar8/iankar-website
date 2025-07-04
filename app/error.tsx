@@ -23,7 +23,7 @@ export default function Error({
         transition={{ duration: 0.8 }}
         className="text-center"
       >
-        <h1 className="text-h1 text-[#2B2B2B]">
+        <h1 className="text-h1 text-dark">
           Something Went Wrong
         </h1>
         
@@ -34,13 +34,13 @@ export default function Error({
         <div className="space-x-4">
           <button
             onClick={reset}
-            className="inline-flex items-center space-x-2 text-[#2B2B2B] hover:text-[#4A4A4A] transition-colors"
+            className="inline-flex items-center space-x-2 text-dark hover:text-dark/70 transition-colors"
           >
             Try Again
           </button>
           <Link 
             href="/"
-            className="inline-flex items-center space-x-2 text-[#2B2B2B] hover:text-[#4A4A4A] transition-colors"
+            className="inline-flex items-center space-x-2 text-dark hover:text-dark/70 transition-colors"
           >
             Go Home
           </Link>

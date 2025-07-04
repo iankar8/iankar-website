@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { motion } from 'framer-motion'
 
 export default function Navbar() {
   const pathname = usePathname()
@@ -29,33 +30,48 @@ export default function Navbar() {
           <div className="flex items-center gap-8 text-sm font-medium">
             <Link
               href="/about"
-              className={`capitalize hover:text-dark transition-colors ${
+              className={`relative capitalize hover:text-dark transition-colors ${
                 isActive('/about') ? 'text-dark' : 'text-dark/80'
               }`}
             >
               about me
+              {isActive('/about') && (
+                <motion.span
+                  layoutId="nav-underline"
+                  className="nav-underline"
+                />
+              )}
             </Link>
             <Link
               href="/projects"
-              className="capitalize text-dark/80 hover:text-dark transition-colors"
+              className={`relative capitalize hover:text-dark transition-colors text-dark/80`}
             >
               projects
+              {isActive('/projects') && (
+                <motion.span layoutId="nav-underline" className="nav-underline" />
+              )}
             </Link>
             <Link
               href="/recommendations"
-              className={`capitalize hover:text-dark transition-colors ${
+              className={`relative capitalize hover:text-dark transition-colors ${
                 isActive('/recommendations') ? 'text-dark' : 'text-dark/80'
               }`}
             >
               rec's
+              {isActive('/recommendations') && (
+                <motion.span layoutId="nav-underline" className="nav-underline" />
+              )}
             </Link>
             <Link
               href="/blog"
-              className={`capitalize hover:text-dark transition-colors ${
+              className={`relative capitalize hover:text-dark transition-colors ${
                 isActive('/blog') ? 'text-dark' : 'text-dark/80'
               }`}
             >
               blog
+              {isActive('/blog') && (
+                <motion.span layoutId="nav-underline" className="nav-underline" />
+              )}
             </Link>
           </div>
         </div>

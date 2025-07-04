@@ -72,7 +72,7 @@ export default function Recommendations() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <h1 className="text-h1 text-[#2B2B2B]">
+        <h1 className="text-h1 text-dark">
           Recommendations
         </h1>
         
@@ -82,7 +82,7 @@ export default function Recommendations() {
 
         {Object.entries(recommendations).map(([category, items]) => (
           <section key={category} className="space-y-8">
-            <h2 className="text-h2 text-[#2B2B2B]">
+            <h2 className="text-h2 text-dark">
               {category}
             </h2>
             

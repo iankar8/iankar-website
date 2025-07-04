@@ -4,7 +4,7 @@ import { ArrowLongRightIcon } from '@heroicons/react/24/outline'
 export default function Home() {
   return (
     <section className="section py-20">
-      <h1 className="text-h1 text-[#2B2B2B] mb-6">
+      <h1 className="text-h1 text-dark mb-6">
         Hi, I'm Ian Kar
       </h1>
       
@@ -14,7 +14,7 @@ export default function Home() {
           href="https://codeium.com" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="text-[#2B2B2B] hover:text-[#4A4A4A] transition-colors underline"
+          className="text-dark hover:text-dark/70 transition-colors underline"
         >
           Codeium
         </a>
@@ -24,7 +24,7 @@ export default function Home() {
       <div className="flex items-center space-x-8">
         <Link 
           href="/blog"
-          className="inline-flex items-center space-x-2 text-[#2B2B2B] hover:text-[#4A4A4A] transition-colors group"
+          className="inline-flex items-center space-x-2 text-dark hover:text-dark/70 transition-colors group"
         >
           <span>Read the Blog</span>
           <ArrowLongRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

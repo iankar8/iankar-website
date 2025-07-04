@@ -19,7 +19,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
   return (
     <article className="section py-20">
       <header className="mb-12">
-        <h1 className="text-h1 text-[#2B2B2B]">
+        <h1 className="text-h1 text-dark mb-4">
           {post.title}
         </h1>
         

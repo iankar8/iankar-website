@@ -8,7 +8,7 @@ export default async function Blog() {
 
   return (
     <div className="section py-20">
-      <h1 className="text-h1 text-[#2B2B2B]">
+      <h1 className="text-h1 text-dark">
         Blog
       </h1>
       

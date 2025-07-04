@@ -24,9 +24,9 @@ export default function ProjectCard({
   const cardContent = (
     <motion.div
       className={`
-        group relative p-6 bg-white/60 border border-[#E5E1D8]/30 rounded-xl 
+        group relative p-6 bg-white/60 border border-dark/10 rounded-xl 
         shadow-md/5 backdrop-blur-sm transition-all duration-300
-        hover:shadow-lg hover:bg-white/80 hover:border-[#E5E1D8]/50
+        hover:shadow-lg hover:bg-white/80 hover:border-dark/20
         ${className}
       `}
       whileHover={{ 
@@ -50,13 +50,13 @@ export default function ProjectCard({
       {/* Content */}
       <div className="relative z-10">
         <div className="flex items-start justify-between mb-4">
-          <h3 className="text-h2 text-[#2B2B2B] group-hover:text-[#1A1A1A] transition-colors">
+          <h3 className="text-h2 text-dark group-hover:text-dark/90 transition-colors">
             {title}
           </h3>
           
           {link && (
             <motion.div
-              className="flex-shrink-0 ml-3 text-[#4A4A4A] group-hover:text-[#2B2B2B]"
+              className="flex-shrink-0 ml-3 text-dark/70 group-hover:text-dark"
               whileHover={{ scale: 1.1 }}
               transition={{ duration: 0.2 }}
             >
@@ -65,7 +65,7 @@ export default function ProjectCard({
           )}
         </div>
 
-        <p className="text-body text-[#4A4A4A] mb-4 leading-relaxed">
+        <p className="text-body text-dark/70 mb-4 leading-relaxed">
           {description}
         </p>
 
@@ -74,7 +74,7 @@ export default function ProjectCard({
             {tags.map((tag, index) => (
               <motion.span
                 key={tag}
-                className="px-3 py-1 text-sm bg-[#2B2B2B]/5 text-[#2B2B2B] rounded-full border border-[#E5E1D8]/30"
+                className="px-3 py-1 text-sm bg-dark/5 text-dark rounded-full border border-dark/20"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: index * 0.05, duration: 0.3 }}
@@ -88,7 +88,7 @@ export default function ProjectCard({
 
       {/* Subtle glow effect on hover */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-br from-[#F6F4E9]/20 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        className="absolute inset-0 bg-gradient-to-br from-cream/20 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         style={{ transform: "translateZ(-1px)" }}
       />
     </motion.div>
@@ -100,14 +100,14 @@ export default function ProjectCard({
         href={link}
         target="_blank"
         rel="noopener noreferrer"
-        className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2B2B2B] focus-visible:ring-offset-2 rounded-xl"
+        className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-dark focus-visible:ring-offset-2 rounded-xl"
       >
         {cardContent}
       </a>
     ) : (
       <Link
         href={link}
-        className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2B2B2B] focus-visible:ring-offset-2 rounded-xl"
+        className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-dark focus-visible:ring-offset-2 rounded-xl"
       >
         {cardContent}
       </Link>

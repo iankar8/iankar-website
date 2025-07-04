@@ -2,7 +2,7 @@ export default function About() {
   return (
     <article className="section py-20">
       <div className="prose prose-lg">
-        <h1 className="text-h1 text-[#2B2B2B]">
+        <h1 className="text-h1 text-dark">
           About Me
         </h1>
         
@@ -13,7 +13,7 @@ export default function About() {
               href="https://codeium.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#2B2B2B] hover:text-[#4A4A4A] transition-colors underline"
+              className="text-dark hover:text-dark/70 transition-colors underline"
             >
               Codeium
             </a>
@@ -39,7 +39,7 @@ export default function About() {
         </div>
 
         <div className="mt-12">
-          <h2 className="text-h2 text-[#2B2B2B]">
+          <h2 className="text-h2 text-dark">
             Get in Touch
           </h2>
           <p>
@@ -49,7 +49,7 @@ export default function About() {
               href="https://twitter.com/iankar_"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#2B2B2B] hover:text-[#4A4A4A] transition-colors underline"
+              className="text-dark hover:text-dark/70 transition-colors underline"
             >
               Twitter
             </a>
