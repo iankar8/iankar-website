@@ -31,4 +31,5 @@ module.exports = {
     },
   },
   plugins: [require('@tailwindcss/typography')],
+  safelist: ['bg-cream','text-dark','bg-dark','border-dark'],
 } 
