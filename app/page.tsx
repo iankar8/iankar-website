@@ -8,17 +8,17 @@ export default function Home() {
         Hi, I'm Ian Kar
       </h1>
       
-      <p className="text-xl text-[#4A4A4A] leading-relaxed mb-8">
-        I write about AI, business, and life. Currently building{' '}
-        <a 
-          href="https://codeium.com" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="text-dark hover:text-dark/70 transition-colors underline"
-        >
-          Codeium
-        </a>
-        , an AI coding assistant.
+      <p className="text-xl text-dark/70 leading-relaxed mb-6">
+        Hey there! I'm Ian, based in San Francisco.
+      </p>
+      <p className="text-xl text-dark/70 leading-relaxed mb-6">
+        This site mainly exists so that I can share my writing. I also have some stuff about what I'm working on, in case that's of interest.
+      </p>
+      <p className="text-xl text-dark/70 leading-relaxed mb-6">
+        I write a once-a-week newsletter called <a href="https://machineearnings.com" target="_blank" rel="noopener noreferrer" className="text-dark underline hover:text-dark/70">Machine Earnings</a>, about how AI impacts the business world, and a personal newsletter that goes out twice a month.
+      </p>
+      <p className="text-xl text-dark/70 leading-relaxed mb-8">
+        Outside of work, I love sports (basketball, football, baseball, and getting more into tennis and golf); music (rap and house), writing, and spending time with my plants and dog.
       </p>
 
       <div className="flex items-center space-x-8">
