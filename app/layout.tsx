@@ -1,19 +1,10 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import localFont from 'next/font/local'
+import { GeistSans } from 'geist/font/sans'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
-const geist = localFont({
-  src: [
-    {
-      path: '../public/fonts/GeistVariable.woff2',
-      weight: '100 900',
-      style: 'normal',
-    },
-  ],
-  variable: '--font-geist-sans',
-})
+const geist = GeistSans
 
 export const metadata: Metadata = {
   title: 'Ian Kar - Blog and Recommendations on AI, Business, and Life',
