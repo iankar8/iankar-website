@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion'
-import LARestaurantsMap from '@/components/panels/LARestaurantsMap'
+import RestaurantsMap from '@/components/panels/RestaurantsMap'
 
 type Recommendation = {
   name: string
@@ -14,6 +14,88 @@ type Recommendation = {
 
 const recommendations: Record<string, Recommendation[]> = {
   'Restaurants': [
+    // Miami Restaurants
+    {
+      name: 'Faena',
+      description: 'Luxurious dining experience in the heart of Miami Beach. High-end cuisine with stunning ocean views.',
+      category: 'Restaurant',
+      location: 'Miami Beach, FL',
+      emoji: '🌴',
+      link: 'https://faena.com'
+    },
+    {
+      name: 'Cote',
+      description: 'Premium Korean BBQ experience in Miami. Known for their exceptional meat quality and service.',
+      category: 'Restaurant',
+      location: 'Miami, FL',
+      emoji: '🥩',
+      link: 'https://cotemiami.com'
+    },
+    {
+      name: 'Rao\'s',
+      description: 'Classic Italian-American cuisine in Miami. Famous for their red sauce and traditional dishes.',
+      category: 'Restaurant',
+      location: 'Miami, FL',
+      emoji: '🇮🇹',
+      link: 'https://raos.com'
+    },
+    {
+      name: 'Uchi',
+      description: 'Innovative Japanese cuisine with a Miami twist. Exceptional sushi and creative dishes.',
+      category: 'Restaurant',
+      location: 'Miami, FL',
+      emoji: '🍣',
+      link: 'https://uchirestaurants.com'
+    },
+    {
+      name: 'Doya',
+      description: 'Modern Turkish cuisine in Miami. Fresh Mediterranean flavors with contemporary presentation.',
+      category: 'Restaurant',
+      location: 'Miami, FL',
+      emoji: '🇹🇷',
+      link: 'https://doyamiami.com'
+    },
+    {
+      name: 'El Secreto',
+      description: 'Authentic Cuban cuisine in Miami. Traditional flavors and warm hospitality.',
+      category: 'Restaurant',
+      location: 'Miami, FL',
+      emoji: '🇨🇺',
+      link: 'https://elsecretomiami.com'
+    },
+    // LA Restaurants
+    {
+      name: 'Catch Steak',
+      description: 'Premium steakhouse in LA with exceptional cuts and sophisticated atmosphere.',
+      category: 'Restaurant',
+      location: 'Los Angeles, CA',
+      emoji: '🥩',
+      link: 'https://catchsteak.com'
+    },
+    {
+      name: 'Felix',
+      description: 'Authentic Italian trattoria in LA. Fresh pasta and traditional Italian dishes.',
+      category: 'Restaurant',
+      location: 'Los Angeles, CA',
+      emoji: '🍝',
+      link: 'https://felixla.com'
+    },
+    {
+      name: 'Mr Chow',
+      description: 'Elegant Chinese cuisine in LA. Known for their Peking duck and upscale dining experience.',
+      category: 'Restaurant',
+      location: 'Los Angeles, CA',
+      emoji: '🥢',
+      link: 'https://mrchow.com'
+    },
+    {
+      name: 'Ivy at the Shore',
+      description: 'Coastal California cuisine in Santa Monica. Perfect for beachside dining with ocean views.',
+      category: 'Restaurant',
+      location: 'Santa Monica, CA',
+      emoji: '🏖️',
+      link: 'https://theivyrestaurants.com'
+    },
     {
       name: 'Bell\'s Beach House',
       description: 'Fresh coastal cuisine with ocean views in Santa Monica. Perfect for beachside dining.',
@@ -131,9 +213,9 @@ export default function Recommendations() {
             {category === 'Restaurants' && (
               <div className="mb-6">
                 <h3 className="text-h3 text-dark mb-4">Map View</h3>
-                <LARestaurantsMap />
+                <RestaurantsMap />
                 <p className="text-sm text-dark/60 mt-2">
-                  📍 My restaurant recommendations are in Los Angeles - Santa Monica, Venice, and West Hollywood
+                  📍 My restaurant recommendations span Miami (Miami Beach, Downtown) and Los Angeles (Santa Monica, Venice, West Hollywood)
                 </p>
               </div>
             )}
