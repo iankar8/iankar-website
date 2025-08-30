@@ -1,21 +1,22 @@
 import Link from 'next/link'
 import { ArrowLongRightIcon } from '@heroicons/react/24/outline'
+import { Ik3dMarqueeUnit } from '@ik/ui'
 
 export default function Home() {
   return (
     <section className="section py-20">
+      <Ik3dMarqueeUnit className="mb-8" data-testid="ikui-marquee">
+        <span>Welcome to my site</span>
+      </Ik3dMarqueeUnit>
       <h1 className="text-h1 text-dark mb-6">
         Hi, I'm Ian Kar
       </h1>
       
       <p className="text-xl text-dark/70 leading-relaxed mb-6">
-        Hey there! I'm Ian, based in San Francisco.
+        I've spent most of my career working in the intersection of tech, finance, and media. I've worked as a hedge fund analyst for an MBS fund; a reporter and journalist at publications like Newsweek and Quartz; a product manager at companies like Acorns; and the founder of a media company called Fintech Today.
       </p>
       <p className="text-xl text-dark/70 leading-relaxed mb-6">
-        This site mainly exists so that I can share my writing. I also have some stuff about what I'm working on, in case that's of interest.
-      </p>
-      <p className="text-xl text-dark/70 leading-relaxed mb-6">
-        I write a once-a-week newsletter called <a href="https://machineearnings.com" target="_blank" rel="noopener noreferrer" className="text-dark underline hover:text-dark/70">Machine Earnings</a>, about how AI impacts the business world, and a personal newsletter that goes out twice a month.
+        Now I spend my time writing, looking after my two dogs, and building things in AI. My day job is consulting for Tier 1 banks on AI product strategy. I also write a daily newsletter called "Field Notes" on Substack where I share my random thoughts across work and life. And I host a YouTube show around fintech for Benzinga.
       </p>
       <p className="text-xl text-dark/70 leading-relaxed mb-8">
         Outside of work, I love sports (basketball, football, baseball, and getting more into tennis and golf); music (rap and house), writing, and spending time with my plants and dog.
@@ -23,7 +24,7 @@ export default function Home() {
 
       <div className="flex items-center space-x-8">
         <Link 
-          href="/blog"
+          href="/writing"
           className="inline-flex items-center space-x-2 text-dark hover:text-dark/70 transition-colors group"
         >
           <span>Read the Blog</span>

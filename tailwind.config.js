@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const ikuiPreset = require('@ik/ui-tokens/tailwind-preset')
+
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -30,6 +32,7 @@ module.exports = {
       },
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  presets: [ikuiPreset],
+  plugins: [require('@tailwindcss/typography'), require('@ik/ui-tokens/tailwind-plugin')],
   safelist: ['bg-cream','text-dark','bg-dark','border-dark'],
 } 

@@ -2,6 +2,9 @@
   "name": "iankar-website",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -40,7 +43,9 @@
     "react-dom": "^18.2.0",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^3.4.1",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "@ik/ui": "workspace:*",
+    "@ik/ui-tokens": "workspace:*"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.10.2",

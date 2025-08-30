@@ -28,14 +28,22 @@ export default function Navbar() {
 
           {/* Navigation Links */}
           <div className="flex items-center gap-8 text-sm font-medium">
+            <a
+              href="https://iankar.substack.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative capitalize hover:text-dark transition-colors text-dark/80"
+            >
+              Field Notes Newsletter
+            </a>
             <Link
-              href="/about"
+              href="/consulting"
               className={`relative capitalize hover:text-dark transition-colors ${
-                isActive('/about') ? 'text-dark' : 'text-dark/80'
+                isActive('/consulting') ? 'text-dark' : 'text-dark/80'
               }`}
             >
-              about me
-              {isActive('/about') && (
+              Consulting
+              {isActive('/consulting') && (
                 <motion.span
                   layoutId="nav-underline"
                   className="nav-underline"
@@ -44,32 +52,26 @@ export default function Navbar() {
             </Link>
             <Link
               href="/projects"
-              className={`relative capitalize hover:text-dark transition-colors text-dark/80`}
+              className={`relative capitalize hover:text-dark transition-colors ${
+                isActive('/projects') ? 'text-dark' : 'text-dark/80'
+              }`}
             >
-              projects
+              Projects
               {isActive('/projects') && (
-                <motion.span layoutId="nav-underline" className="nav-underline" />
+                <motion.span
+                  layoutId="nav-underline"
+                  className="nav-underline"
+                />
               )}
             </Link>
             <Link
-              href="/recommendations"
+              href="/writing"
               className={`relative capitalize hover:text-dark transition-colors ${
-                isActive('/recommendations') ? 'text-dark' : 'text-dark/80'
+                isActive('/writing') ? 'text-dark' : 'text-dark/80'
               }`}
             >
-              rec's
-              {isActive('/recommendations') && (
-                <motion.span layoutId="nav-underline" className="nav-underline" />
-              )}
-            </Link>
-            <Link
-              href="/blog"
-              className={`relative capitalize hover:text-dark transition-colors ${
-                isActive('/blog') ? 'text-dark' : 'text-dark/80'
-              }`}
-            >
-              blog
-              {isActive('/blog') && (
+              Writing
+              {isActive('/writing') && (
                 <motion.span layoutId="nav-underline" className="nav-underline" />
               )}
             </Link>

@@ -1,0 +1,9 @@
+{
+  "name": "@ik/ui",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "sideEffects": false,
+  "dependencies": {
+    "react": "^18.2.0"
+  }
+} 

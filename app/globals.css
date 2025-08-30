@@ -7,7 +7,11 @@
     scroll-behavior: smooth;
   }
 
-  body {@apply bg-cream text-dark font-sans;}
+  body {
+    background-color: #F4F0DB;
+    color: #2B2B2B;
+    font-family: var(--font-geist-sans), sans-serif;
+  }
 
   a {
     color: #2B2B2B;
@@ -43,4 +47,14 @@
   .text-body {
     @apply text-base leading-7;
   }
+
+  @keyframes ikui-marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
+  .ikui-marquee-track {
+    @apply inline-block;
+    animation: ikui-marquee var(--marquee-duration,20s) linear infinite;
+  }
+
+  .bg-cream { background-color: #F4F0DB; }
+  .text-dark { color: #2B2B2B; }
 }

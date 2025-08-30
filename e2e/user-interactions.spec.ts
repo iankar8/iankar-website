@@ -139,6 +139,10 @@ test.describe('User Interactions', () => {
       }
     }
   })
+
+  test('should render IKUI marquee component', async ({ page }) => {
+    await expect(page.locator('[data-testid="ikui-marquee"]')).toBeVisible()
+  })
 })
 
 test.describe('Recommendations Page Interactions', () => {
