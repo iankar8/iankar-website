@@ -5,11 +5,11 @@ export default function Home() {
   return (
     <section className="section py-20">
       <h1 className="text-h1 text-dark mb-6">
-        Hi, I'm Ian Kar
+        Writer and Builder
       </h1>
       
       <p className="text-xl text-dark/70 leading-relaxed mb-6">
-        Writer, entrepreneur, and tech enthusiast sharing thoughts on AI, business, and life.
+        Thinking in public.
       </p>
       
       <p className="text-xl text-dark/70 leading-relaxed mb-6">
