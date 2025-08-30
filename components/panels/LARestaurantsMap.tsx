@@ -15,51 +15,51 @@ type LARestaurant = {
 const laRestaurants: LARestaurant[] = [
   {
     name: "Bell's Beach House",
-    coordinates: [-118.4912, 34.0736], // Santa Monica
+    coordinates: [-118.4968, 34.0100], // Santa Monica Pier area
     cuisine: "Seafood",
-    notes: "Fresh coastal cuisine with ocean views",
+    notes: "Fresh coastal cuisine with ocean views in Santa Monica. Perfect for beachside dining.",
     neighborhood: "Santa Monica"
   },
   {
     name: "Winston House",
-    coordinates: [-118.4912, 34.0736], // Santa Monica
+    coordinates: [-118.4968, 34.0100], // Santa Monica Pier area
     cuisine: "American",
-    notes: "Coastal dining and cocktails",
+    notes: "Coastal dining and cocktails with a sophisticated beach vibe.",
     neighborhood: "Santa Monica"
   },
   {
     name: "Gjelina",
-    coordinates: [-118.4912, 34.0736], // Venice
+    coordinates: [-118.4650, 33.9850], // Venice Beach area
     cuisine: "Italian",
-    notes: "Artisanal pizza and seasonal Italian",
+    notes: "Artisanal pizza and seasonal Italian in Venice. One of the best spots for creative Italian cuisine.",
     neighborhood: "Venice"
   },
   {
     name: "Horses",
-    coordinates: [-118.4912, 34.0736], // West Hollywood
+    coordinates: [-118.3850, 34.0900], // West Hollywood
     cuisine: "American",
-    notes: "Modern American with great cocktails",
+    notes: "Modern American with great cocktails in West Hollywood. Perfect for date night.",
     neighborhood: "West Hollywood"
   },
   {
     name: "Delilah",
-    coordinates: [-118.4912, 34.0736], // West Hollywood
+    coordinates: [-118.3850, 34.0900], // West Hollywood
     cuisine: "American",
-    notes: "Sophisticated dining and entertainment",
+    notes: "Sophisticated dining and entertainment in West Hollywood. Great for special occasions.",
     neighborhood: "West Hollywood"
   },
   {
     name: "Lavo",
-    coordinates: [-118.4912, 34.0736], // West Hollywood
+    coordinates: [-118.3850, 34.0900], // West Hollywood
     cuisine: "Italian",
-    notes: "High-end Italian with nightlife",
+    notes: "High-end Italian with nightlife in West Hollywood. Perfect for dinner and drinks.",
     neighborhood: "West Hollywood"
   },
   {
     name: "Dan Tana's",
-    coordinates: [-118.4912, 34.0736], // West Hollywood
+    coordinates: [-118.3850, 34.0900], // West Hollywood
     cuisine: "Italian",
-    notes: "Classic red sauce Italian joint",
+    notes: "Classic red sauce Italian joint in West Hollywood. Old-school charm and great food.",
     neighborhood: "West Hollywood"
   }
 ];
@@ -73,9 +73,9 @@ export default function LARestaurantsMap() {
       <Map
         mapboxAccessToken={mapboxToken}
         initialViewState={{
-          longitude: -118.4912,
-          latitude: 34.0736,
-          zoom: 11
+          longitude: -118.4400,
+          latitude: 34.0400,
+          zoom: 10
         }}
         style={{ width: '100%', height: '100%' }}
         mapStyle="mapbox://styles/mapbox/light-v11"
