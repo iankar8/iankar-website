@@ -1,16 +1,16 @@
 import Link from 'next/link'
 import { ArrowLongRightIcon } from '@heroicons/react/24/outline'
-import { Ik3dMarqueeUnit } from '@ik/ui'
 
 export default function Home() {
   return (
     <section className="section py-20">
-      <Ik3dMarqueeUnit className="mb-8" data-testid="ikui-marquee">
-        <span>Welcome to my site</span>
-      </Ik3dMarqueeUnit>
       <h1 className="text-h1 text-dark mb-6">
         Hi, I'm Ian Kar
       </h1>
+      
+      <p className="text-xl text-dark/70 leading-relaxed mb-6">
+        Writer, entrepreneur, and tech enthusiast sharing thoughts on AI, business, and life.
+      </p>
       
       <p className="text-xl text-dark/70 leading-relaxed mb-6">
         I've spent most of my career working in the intersection of tech, finance, and media. I've worked as a hedge fund analyst for an MBS fund; a reporter and journalist at publications like Newsweek and Quartz; a product manager at companies like Acorns; and the founder of a media company called Fintech Today.
@@ -23,13 +23,15 @@ export default function Home() {
       </p>
 
       <div className="flex items-center space-x-8">
-        <Link 
-          href="/writing"
+        <a 
+          href="https://iankar.substack.com/"
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center space-x-2 text-dark hover:text-dark/70 transition-colors group"
         >
-          <span>Read the Blog</span>
+          <span>Read Field Notes</span>
           <ArrowLongRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-        </Link>
+        </a>
       </div>
     </section>
   )
