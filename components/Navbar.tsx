@@ -65,6 +65,20 @@ export default function Navbar() {
               )}
             </Link>
             <Link
+              href="/recommendations"
+              className={`relative capitalize hover:text-dark transition-colors ${
+                isActive('/recommendations') ? 'text-dark' : 'text-dark/80'
+              }`}
+            >
+              Rec's
+              {isActive('/recommendations') && (
+                <motion.span
+                  layoutId="nav-underline"
+                  className="nav-underline"
+                />
+              )}
+            </Link>
+            <Link
               href="/writing"
               className={`relative capitalize hover:text-dark transition-colors ${
                 isActive('/writing') ? 'text-dark' : 'text-dark/80'
