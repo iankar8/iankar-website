@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ian Kar Website
 
-## Getting Started
+Personal website built with Next.js, Tailwind CSS, and Framer Motion.
 
-First, run the development server:
+## Features
+
+- Modern, responsive design with 8pt spacing system
+- Interactive restaurant map using Mapbox
+- Blog and recommendations sections
+- Newsletter integration with Substack
+
+## Mapbox Integration
+
+The restaurant recommendations page includes an interactive map powered by Mapbox. The map is pre-configured with a public access token and will work immediately.
+
+**Features:**
+- Interactive restaurant pins for LA locations
+- Click on markers to see restaurant details
+- Custom styling that matches the site's design
+- Responsive design for all screen sizes
+
+**Restaurants Included:**
+- Bell's Beach House (Santa Monica)
+- Winston House (Santa Monica) 
+- Gjelina (Venice)
+- Horses (West Hollywood)
+- Delilah (West Hollywood)
+- Lavo (West Hollywood)
+- Dan Tana's (West Hollywood)
+
+## Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deployment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The site is automatically deployed to Vercel on push to main branch.

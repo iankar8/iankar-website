@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion'
+import LARestaurantsMap from '@/components/panels/LARestaurantsMap'
 
 type Recommendation = {
   name: string
@@ -14,20 +15,60 @@ type Recommendation = {
 const recommendations: Record<string, Recommendation[]> = {
   'Restaurants': [
     {
-      name: 'Nopa',
-      description: 'Modern California cuisine in a beautiful converted bank building. Great for late-night dining.',
+      name: 'Bell\'s Beach House',
+      description: 'Fresh coastal cuisine with ocean views in Santa Monica. Perfect for beachside dining.',
       category: 'Restaurant',
-      location: 'San Francisco',
-      emoji: '🍽️',
-      link: 'https://nopasf.com'
+      location: 'Santa Monica, LA',
+      emoji: '🏖️',
+      link: 'https://bellsbeachhouse.com'
     },
     {
-      name: 'Che Fico',
-      description: 'Rustic Italian dishes in a stylish setting. The pizza and pasta are incredible.',
+      name: 'Winston House',
+      description: 'Coastal dining and cocktails with a sophisticated beach vibe.',
       category: 'Restaurant',
-      location: 'San Francisco',
+      location: 'Santa Monica, LA',
+      emoji: '🌊',
+      link: 'https://winstonhouse.com'
+    },
+    {
+      name: 'Gjelina',
+      description: 'Artisanal pizza and seasonal Italian in Venice. One of the best spots for creative Italian cuisine.',
+      category: 'Restaurant',
+      location: 'Venice, LA',
       emoji: '🇮🇹',
-      link: 'https://chefico.com'
+      link: 'https://gjelina.com'
+    },
+    {
+      name: 'Horses',
+      description: 'Modern American with great cocktails in West Hollywood. Perfect for date night.',
+      category: 'Restaurant',
+      location: 'West Hollywood, LA',
+      emoji: '🐎',
+      link: 'https://horsesla.com'
+    },
+    {
+      name: 'Delilah',
+      description: 'Sophisticated dining and entertainment in West Hollywood. Great for special occasions.',
+      category: 'Restaurant',
+      location: 'West Hollywood, LA',
+      emoji: '✨',
+      link: 'https://delilahla.com'
+    },
+    {
+      name: 'Lavo',
+      description: 'High-end Italian with nightlife in West Hollywood. Perfect for dinner and drinks.',
+      category: 'Restaurant',
+      location: 'West Hollywood, LA',
+      emoji: '🍷',
+      link: 'https://lavorestaurant.com'
+    },
+    {
+      name: 'Dan Tana\'s',
+      description: 'Classic red sauce Italian joint in West Hollywood. Old-school charm and great food.',
+      category: 'Restaurant',
+      location: 'West Hollywood, LA',
+      emoji: '🍝',
+      link: 'https://dantanas.com'
     }
   ],
   'Books': [
@@ -85,6 +126,17 @@ export default function Recommendations() {
             <h2 className="text-h2 text-dark">
               {category}
             </h2>
+            
+            {/* Map for restaurants */}
+            {category === 'Restaurants' && (
+              <div className="mb-6">
+                <h3 className="text-h3 text-dark mb-4">Map View</h3>
+                <LARestaurantsMap />
+                <p className="text-sm text-dark/60 mt-2">
+                  📍 My restaurant recommendations are in Los Angeles - Santa Monica, Venice, and West Hollywood
+                </p>
+              </div>
+            )}
             
             <div className="space-y-8">
               {items.map((item) => (
